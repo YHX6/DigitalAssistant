@@ -9,7 +9,7 @@ router.post('/create', async (req, res) => {
         const { email, content } = req.body;
         const user = await User.findOne({ email });
         if (!user) {
-            return res.status(404).send('User not found');
+            return res.status(404).send('用户信息不存在！');
         }
         const newNote = new Note({ email, content });
         await newNote.save();
@@ -25,7 +25,7 @@ router.get('/:email', async (req, res) => {
     try {
         const notes = await Note.find({ email: req.params.email });
         if (notes.length === 0) {
-            return res.status(404).send('No notes found for this user');
+            return res.status(404).send('无笔记存在！');
         }
         res.status(200).json(notes);
     } catch (error) {
@@ -39,9 +39,9 @@ router.put('/update/:id', async (req, res) => {
         const { content } = req.body;
         const note = await Note.findByIdAndUpdate(req.params.id, { content }, { new: true, runValidators: true });
         if (!note) {
-            return res.status(404).send('Note not found');
+            return res.status(404).send('笔记未找到！');
         }
-        res.status(200).send('Note updated successfully');
+        res.status(200).send('修改成功！');
     } catch (error) {
         res.status(400).send(error.message);
     }
@@ -52,9 +52,9 @@ router.delete('/delete/:id', async (req, res) => {
     try {
         const note = await Note.findByIdAndDelete(req.params.id);
         if (!note) {
-            return res.status(404).send('Note not found');
+            return res.status(404).send('笔记未找到！');
         }
-        res.status(200).send('Note deleted successfully');
+        res.status(200).send('删除成功！');
     } catch (error) {
         res.status(400).send(error.message);
     }

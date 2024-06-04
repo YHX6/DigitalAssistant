@@ -8,7 +8,7 @@ router.post('/create', async (req, res) => {
         const { email, password } = req.body;
         const newUser = new User({ email, password });
         await newUser.save();
-        res.status(201).send('User created successfully');
+        res.status(201).send('用户创建成功！');
     } catch (error) {
         res.status(400).send(error.message);
     }
@@ -24,9 +24,9 @@ router.put('/update', async (req, res) => {
             { new: true, runValidators: true }
         );
         if (!user) {
-            return res.status(404).send('User not found');
+            return res.status(404).send('用户不存在！');
         }
-        res.status(200).send('User updated successfully');
+        res.status(200).send('修改成功！');
     } catch (error) {
         res.status(400).send(error.message);
     }
@@ -38,7 +38,7 @@ router.post('/login', async (req, res) => {
         const { email, password } = req.body;
         const user = await User.findOne({ email });
         if (!user) {
-            return res.status(404).send('User not found');
+            return res.status(404).send('');
         }
         if (user.password !== password) {
             return res.status(401).send('Invalid password');
