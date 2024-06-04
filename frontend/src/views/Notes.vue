@@ -22,7 +22,7 @@
       <ul class="space-y-4">
         <li
           v-for="(note, index) in notesList"
-          :key="note._id"
+          :key="note.id"
           class="flex flex-col md:flex-row items-start md:items-center"
         >
           <textarea
@@ -30,13 +30,13 @@
             class="flex-1 mb-2 md:mb-0 md:mr-2 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           ></textarea>
           <button
-            @click="updateNote(note._id, note.content)"
+            @click="updateNote(note.id, note.content)"
             class="inline-flex items-center px-4 py-2 mb-2 md:mb-0 md:mr-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
           >
             修改
           </button>
           <button
-            @click="deleteNote(note._id)"
+            @click="deleteNote(note.id)"
             class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
           >
             删除
@@ -100,7 +100,7 @@
       async deleteNote(noteId) {
         try {
           await axios.delete(`http://localhost:3000/api/notes/delete/${noteId}`);
-          this.notesList = this.notesList.filter(note => note._id !== noteId);  // Remove the deleted note from the list
+          this.notesList = this.notesList.filter(note => note.id !== noteId);  // Remove the deleted note from the list
           alert('笔记删除成功！');
         } catch (error) {
           console.error('Failed to delete note:', error);

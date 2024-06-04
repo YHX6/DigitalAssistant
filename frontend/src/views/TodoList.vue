@@ -22,7 +22,7 @@
       <ul class="space-y-4">
         <li
           v-for="(todo, index) in todoList"
-          :key="todo._id"
+          :key="todo.id"
           class="flex flex-col md:flex-row items-start md:items-center"
         >
           <input
@@ -31,13 +31,13 @@
             class="flex-1 mb-2 md:mb-0 md:mr-2 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
           <button
-            @click="updateTodo(todo._id, todo.content)"
+            @click="updateTodo(todo.id, todo.content)"
             class="inline-flex items-center px-4 py-2 mb-2 md:mb-0 md:mr-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
           >
             修改
           </button>
           <button
-            @click="deleteTodo(todo._id)"
+            @click="deleteTodo(todo.id)"
             class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
           >
             删除
@@ -101,7 +101,7 @@
       async deleteTodo(todoId) {
         try {
           await axios.delete(`http://localhost:3000/api/todos/delete/${todoId}`);
-          this.todoList = this.todoList.filter(todo => todo._id !== todoId);  // Remove the deleted todo from the list
+          this.todoList = this.todoList.filter(todo => todo.id !== todoId);  // Remove the deleted todo from the list
           alert('删除待办事项成功！');
         } catch (error) {
           console.error('Failed to delete todo:', error);

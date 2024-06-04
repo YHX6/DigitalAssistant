@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const sequelize = require('./config/database');
 const cors = require('cors');
 const userRoutes = require('./routes/userRouter');
 const noteRoutes = require("./routes/noteRouter");
@@ -8,6 +9,15 @@ const todoRoutes = require("./routes/todoRouter");
 require('dotenv').config();
 
 const app = express();
+
+// Synchronize all defined models to the DB.
+sequelize.sync()
+  .then(() => {
+    console.log('Database & tables created!');
+  })
+  .catch(err => {
+    console.error('Unable to create tables, shutting down...', err);
+  });
 
 // Middleware
 app.use(bodyParser.json());
