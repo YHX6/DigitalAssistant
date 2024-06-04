@@ -41,9 +41,9 @@ router.post('/login', async (req, res) => {
             return res.status(404).send('');
         }
         if (user.password !== password) {
-            return res.status(401).send('Invalid password');
+            return res.status(401).send('密码错误！');
         }
-        res.status(200).send('Login successful');
+        res.status(200).send('登录成功！');
     } catch (error) {
         res.status(400).send(error.message);
     }
@@ -54,7 +54,7 @@ router.get('/:email', async (req, res) => {
     try {
         const user = await User.findOne({ email: req.params.email });
         if (!user) {
-            return res.status(404).send('User not found');
+            return res.status(404).send('用户不存在！');
         }
         res.status(200).json(user);
     } catch (error) {

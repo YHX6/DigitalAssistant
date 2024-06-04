@@ -3,10 +3,10 @@
     <NavigationMenu></NavigationMenu>
   
     <div class="container mx-auto p-4">
-      <h1 class="text-2xl font-bold mb-4">Note Management</h1>
+      <h1 class="text-2xl font-bold mb-4">笔记管理</h1>
       <form @submit.prevent="addNote" class="mb-4 flex flex-col md:flex-row items-start md:items-center">
         <div class="flex-1 mb-2 md:mb-0 md:mr-2">
-          <label class="block text-sm font-medium text-gray-700">New Note:</label>
+          <label class="block text-sm font-medium text-gray-700">新建笔记:</label>
           <textarea
             v-model="newNote"
             class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -33,13 +33,13 @@
             @click="updateNote(note._id, note.content)"
             class="inline-flex items-center px-4 py-2 mb-2 md:mb-0 md:mr-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
           >
-            Update
+            修改
           </button>
           <button
             @click="deleteNote(note._id)"
             class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
           >
-            Delete
+            删除
           </button>
         </li>
       </ul>
@@ -80,10 +80,10 @@
           });
           this.notesList.push(response.data);  
           this.newNote = '';
-          alert('Note added successfully');
+          alert('笔记创建成功！');
         } catch (error) {
           console.error('Failed to add note:', error);
-          alert('Failed to add note');
+          alert('笔记创建失败！');
         }
       },
       async updateNote(noteId, content) {
@@ -91,20 +91,20 @@
           await axios.put(`http://localhost:3000/api/notes/update/${noteId}`, {
             content
           });
-          alert('Note updated successfully');
+          alert('笔记修改成功！');
         } catch (error) {
           console.error('Failed to update note:', error);
-          alert('Failed to update note');
+          alert('笔记修改失败！');
         }
       },
       async deleteNote(noteId) {
         try {
           await axios.delete(`http://localhost:3000/api/notes/delete/${noteId}`);
           this.notesList = this.notesList.filter(note => note._id !== noteId);  // Remove the deleted note from the list
-          alert('Note deleted successfully');
+          alert('笔记删除成功！');
         } catch (error) {
           console.error('Failed to delete note:', error);
-          alert('Failed to delete note');
+          alert('笔记删除失败！');
         }
       }
     },

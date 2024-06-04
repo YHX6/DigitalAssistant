@@ -12,39 +12,22 @@
                 class="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0"
               />
 
-              <h1 class="text-xl font-bold">Profile</h1>
-              <!-- <form @submit.prevent="updatePersonalInfo" class="text-gray-700 flex flex-col gap-2">
-                <div>
-                  <label>Name:</label>
-                  <input type="text" v-model="name" />
-                </div>
-                <div>
-                  <label>Email:</label>
-                  <input type="email" v-model="email" disabled />
-                </div>
-                <div>
-                  <label>Phone Number:</label>
-                  <input type="text" v-model="phoneNumber" />
-                </div>
-                <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">
-                  Update
-                </button>
-              </form> -->
+              <h1 class="text-xl font-bold">个人信息</h1>
               <form @submit.prevent="updatePersonalInfo" class="text-gray-700 flex flex-col gap-4">
                 <div class="flex flex-col gap-2">
-                  <label class="font-semibold text-lg">Name:</label>
+                  <label class="font-semibold text-lg">姓名:</label>
                   <input type="text" v-model="name" class="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
                 </div>
                 <div class="flex flex-col gap-2">
-                  <label class="font-semibold text-lg">Email:</label>
+                  <label class="font-semibold text-lg">邮箱:</label>
                   <input type="email" v-model="email" disabled class="border border-gray-300 rounded-lg p-2 bg-gray-100 cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-blue-500" />
                 </div>
                 <div class="flex flex-col gap-2">
-                  <label class="font-semibold text-lg">Phone Number:</label>
+                  <label class="font-semibold text-lg">手机号:</label>
                   <input type="text" v-model="phoneNumber" class="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
                 </div>
                 <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg font-semibold">
-                  Update
+                  修改
                 </button>
               </form>
 
@@ -53,12 +36,9 @@
         </div>
         <div class="col-span-4 sm:col-span-9">
           <div class="bg-white shadow rounded-lg p-6">
-            <h2 class="text-xl font-bold mb-4">About Me</h2>
+            <h2 class="text-xl font-bold mb-4">介绍</h2>
             <p class="text-gray-700">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus est vitae tortor ullamcorper, ut
-              vestibulum velit convallis. Aenean posuere risus non velit egestas suscipit. Nunc finibus vel ante id
-              euismod. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam
-              erat volutpat. Nulla vulputate pharetra tellus, in luctus risus rhoncus id.
+              我是一名充满好奇心的学生，热爱探索各种学科知识并不断挑战自我。学习对我来说不仅是获取知识的过程，更是发现新事物和解决问题的机会。我喜欢在团队中合作，与同学们一起完成项目和任务，共同进步。我也积极参加各种课外活动，培养自己的多方面能力。我相信通过不断的努力和学习，我可以为未来的事业和生活打下坚实的基础，成为一个对社会有贡献的人。
             </p>
           </div>
         </div>
